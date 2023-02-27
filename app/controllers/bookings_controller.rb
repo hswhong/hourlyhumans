@@ -1,7 +1,4 @@
 class BookingsController < ApplicationController
-  def index
-  end
-
   def create
     @user = current_user
     @booking = Booking.new(booking_params)
