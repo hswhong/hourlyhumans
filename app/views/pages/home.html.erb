@@ -1,8 +1,6 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<%= button_to "Create a listing", new_booking_path(current_user) %>
-
 <ul>
   <% @users.each do |user| %>
     <strong><%= link_to user.first_name, booking_path(user) %></strong>
