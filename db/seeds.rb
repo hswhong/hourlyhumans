@@ -40,7 +40,7 @@ pp "Creating dangerous and illegal bookings..."
     end_date: Faker::Date.between(from: '2023-09-26', to: '2023-09-30'),
     total_price: rand(10..1000),
     user_bookee: User.order("RANDOM()").first,
-    user_booker: User.order("RANDOM()").first,
+    user_booker: User.order("RANDOM()").last,
     description: "#{Faker::Hobby.activity} and #{Faker::Job.field}. Must also be able to #{Faker::Company.bs} and have good #{Faker::Job.key_skill}. Experience with #{Faker::Appliance.brand} #{Faker::Appliance.equipment}s is required. When we meet, remember: #{Faker::Marketing.buzzwords}."
   )
   pp "Seeding bookings..."
