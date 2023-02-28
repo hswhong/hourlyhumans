@@ -72,19 +72,6 @@
               </div>
             </div>
             <hr>
-            <% if @user == current_user %>
-              <div class="row">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">Bookings</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  <% @user.bookings.each do |booking| %>
-                    <%= booking %>
-                  <% end%>
-                </div>
-              </div>
-              <hr>
-            <% end %>
             <div class="row">
               <div class="col-sm-3">
                 <h6 class="mb-0">Location</h6>
