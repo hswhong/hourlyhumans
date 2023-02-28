@@ -18,10 +18,11 @@
                       input_html: { autocomplete: "new-password" } %>
           <%= f.input :first_name %>
           <%= f.input :last_name %>
-          <%= f.input :task %>
           <%= f.input :description %>
-          <%= f.input :hourly_price %>
           <%= f.input :location %>
+          <%= f.input :role, label: "Do you want to offer yourself up for rent as a Human?" %>
+          <%= f.input :task, placeholder: "Fill only if you are offering yourself up for rent as a Human" %>
+          <%= f.input :hourly_price, placeholder: "Fill only if you are offering yourself up for rent as a Human" %>
           <%= f.input :photo, as: :file %>
         </div>
         <div class="form-actions">
