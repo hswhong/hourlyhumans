@@ -1,0 +1,14 @@
+<div class="container py-4">
+  <div class="row">
+    <h1>Create a booking</h1>
+    <%= simple_form_for @booking do |f| %>
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
+      <%= f.input :total_price %>
+      <%= f.input :user_bookee_id %>
+      <%# <%= f.input :user_booker_id %> %>
+      <%= f.input :description %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>
