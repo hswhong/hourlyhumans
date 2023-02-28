@@ -6,5 +6,6 @@
     <strong><%= link_to user.first_name, user_path(user) %></strong>
     <li><%= user.task %></li>
     <li><%= user.hourly_price %></li>
+    <%= link_to "Make a booking!", new_user_booking_path(user) %>
   <% end %>
 </ul>
