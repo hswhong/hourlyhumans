@@ -42,7 +42,7 @@ pp "Creating bookings..."
     user_bookee: User.order("RANDOM()").first,
     user_booker: User.order("RANDOM()").last,
     hours_per_day: rand(1..24),
-    description: "I need someone specialised in #{Faker::Commerce.department(max: 2, fixed_amount: true)}. Ideally with some history of professional #{Faker::Hobby.activity} and #{Faker::Job.field}. Must also be able to #{Faker::Company.bs}. Experience with #{Faker::Appliance.brand} #{Faker::Appliance.equipment}s is required. THIS JOB IS A SECRET. When we meet, don't be #{Faker::Verb.past_participle}, just remember: #{Faker::Marketing.buzzwords}."
+    description: "I need someone specialised in #{Faker::Commerce.department(max: 2, fixed_amount: true)}. Ideally with some history of professional #{Faker::Hobby.activity}. Must also be able to #{Faker::Company.bs}. Experience with #{Faker::Appliance.brand} #{Faker::Appliance.equipment}s is required. THIS JOB IS A SECRET. When we meet, just remember: #{Faker::Marketing.buzzwords}."
   )
   pp "Seeding bookings..."
 end
