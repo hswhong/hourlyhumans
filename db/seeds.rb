@@ -16,13 +16,13 @@ User.destroy_all
 pp "Done."
 
 # Create new users
-pp "Creating new, shiny, perfect users..."
+pp "Creating users..."
 
 10.times do
   User.create!(
     email: Faker::Internet.safe_email,
     password: Faker::Internet.password(min_length: 10, max_length: 20),
-    first_name: Faker::Games::ElderScrolls.first_name,
+    first_name: Faker::Name.first_name,
     last_name: Faker::Games::ElderScrolls.last_name,
     task: Faker::Commerce.department(max: 2, fixed_amount: true),
     hourly_price: rand(10..50),
@@ -33,7 +33,7 @@ pp "Creating new, shiny, perfect users..."
 end
 
 # Create new bookings
-pp "Creating dangerous and illegal bookings..."
+pp "Creating bookings..."
 10.times do
   Booking.create!(
     start_date: Faker::Date.between(from: '2023-08-23', to: '2023-09-25'),
@@ -41,7 +41,8 @@ pp "Creating dangerous and illegal bookings..."
     total_price: rand(10..1000),
     user_bookee: User.order("RANDOM()").first,
     user_booker: User.order("RANDOM()").last,
-    description: "#{Faker::Hobby.activity} and #{Faker::Job.field}. Must also be able to #{Faker::Company.bs} and have good #{Faker::Job.key_skill}. Experience with #{Faker::Appliance.brand} #{Faker::Appliance.equipment}s is required. When we meet, remember: #{Faker::Marketing.buzzwords}."
+    hours_per_day: rand(1..24),
+    description: "I need someone specialised in #{Faker::Commerce.department(max: 2, fixed_amount: true)}. Ideally with some history of professional #{Faker::Hobby.activity}. Must also be able to #{Faker::Company.bs}. Experience with #{Faker::Appliance.brand} #{Faker::Appliance.equipment}s is required. THIS JOB IS A SECRET. When we meet, just remember: #{Faker::Marketing.buzzwords}."
   )
   pp "Seeding bookings..."
 end
