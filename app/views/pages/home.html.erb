@@ -2,7 +2,9 @@
 <div class="title-top">
   <h1>Hourly Humans</h1>
   <p>Many humans, little hours</p>
-      <%= link_to "Create a listing", new_user_booking_path(current_user), class: "btn btn-primary w-1/4", style: "btn-sm" %>
+  <% if user_signed_in? %>
+    <%= link_to "Create a listing", new_user_booking_path(current_user), class: "btn btn-primary w-1/4", style: "btn-sm" %>
+  <% end %>
   </div>
 
 
