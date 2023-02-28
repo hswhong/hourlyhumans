@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :bookings_as_booker, class_name: "Booker", foreign_key: :user_booker_id
 
   has_one_attached :photo
+
 end
