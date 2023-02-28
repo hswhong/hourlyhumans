@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="row">
+    <h1>These are your bookings</h1>
+    <% @bookings.order(:start_date).each do |booking| %>
+    <div class="card m-4 p-3"><%= booking.description %>, £<%= booking.total_price %></div>
+    <% end %>
+  </div>
+</div>
