@@ -1,5 +1,4 @@
 body {
-  margin-top: 20px;
   color: #1a202c;
   text-align: left;
   background-color: #e2e8f0;
@@ -29,6 +28,11 @@ body {
   flex: 1 1 auto;
   min-height: 1px;
   padding: 1rem;
+}
+
+.card-image {
+  max-width:100%;
+  max-height:100%;
 }
 
 .gutters-sm {
