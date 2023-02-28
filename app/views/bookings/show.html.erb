@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+      <ul><strong>Start date: </strong><%= @booking.start_date %></ul>
+      <ul><strong>End date: </strong><%= @booking.end_date %></ul>
+      <ul><strong>Total price: </strong><%= @booking.total_price %></ul>
+      <ul><strong>User Bookee id: </strong><%= @booking.user_bookee_id %></ul>
+      <ul><strong>Booking created at: </strong><%= @booking.created_at %></ul>
+      <ul><strong>Booking updated at: </strong><%= @booking.updated_at %></ul>
+      <ul><strong>Hours per day: </strong><%= @booking.hours_per_day %></ul>
+      <ul><strong>Description: </strong><%= @booking.description %></ul>
+    </li>
+  </div>
+</div>
+<%# "start_date"
+    t.date "end_date"
+    t.float "total_price"
+    t.bigint "user_bookee_id"
+    t.bigint "user_booker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "description"
+    t.integer "hours_per_day" %>
