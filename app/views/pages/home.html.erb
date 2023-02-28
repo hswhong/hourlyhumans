@@ -1,11 +1,45 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-<ul>
-  <% @users.each do |user| %>
-    <strong><%= link_to user.first_name, user_path(user) %></strong>
-    <li><%= user.task %></li>
-    <li><%= user.hourly_price %></li>
-    <%= link_to "Make a booking!", new_user_booking_path(user) %>
+<div class="container">
+<div class="title-top">
+  <h1>Hourly Humans</h1>
+  <p>Many humans, little hours</p>
+  <% if user_signed_in? %>
+    <%= link_to "Create a listing", new_user_booking_path(current_user), class: "btn btn-primary w-1/4", style: "btn-sm" %>
   <% end %>
-</ul>
+  </div>
+
+
+<div class="grid-card">
+      <% @users.each do |user| %>
+        <div class="card">
+        <div class="card-info">
+          <strong><%= link_to user.first_name, user_path(user) %></strong> <br>
+          <strong>Category: </strong><%= user.task %> <br>
+          <strong>Price: </strong>£<%= user.hourly_price %> <br>
+          <strong>Location: </strong><%= user.location %> <br>
+        </div>
+          <%# <button type="button" id="btn">Rent human</button> %>
+          <div class="d-flex justify-content-center">
+            <%= link_to "Rent a human", new_user_booking_path(user), class: "btn btn-outline-primary", style: "btn-sm" %>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>
+
+
+<%# Previous code that was used with Unordered List %>
+<%# ______________________________________________________ %>
+<%#
+    <ul>
+<div class="grid-card">
+      <% @users.each do |user| %>
+        <%# <div class="card"> %>
+          <%# <strong><%= link_to user.first_name, booking_path(user) %>
+          <%# <li><strong>Category: </strong><%= user.task %>
+          <%# <li><strong>Price: £</strong><%= user.hourly_price %>
+          <%# <li><strong>Location: </strong><%= user.location %>
+        <%# </div> %>
+      <%# <% end %>
+  <%# </div> %>
+    <%# </ul> %>
+<%# </div> %>
