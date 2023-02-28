@@ -1,7 +1,9 @@
 class BookingsController < ApplicationController
 
   def index
-    @bookings = Booking.where(user_booker_id: current_user)
+    @today = Date.today
+    @bookings_active = Booking.where(user_booker_id: current_user).where("end_date >= ?", @today).order(:start_date)
+    @bookings_completed = Booking.where(user_booker_id: current_user).where("end_date < ?", @today).order(:start_date)
   end
 
   def new

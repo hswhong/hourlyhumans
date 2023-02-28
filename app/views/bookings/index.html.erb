@@ -1,8 +1,39 @@
 <div class="container">
-  <div class="row">
+  <div class="row m-4">
     <h1>These are your bookings</h1>
-    <% @bookings.order(:start_date).each do |booking| %>
-    <div class="card m-4 p-3"><%= booking.description %>, £<%= booking.total_price %></div>
+    <h2>Active bookings</h2>
+    <% @bookings_active.each do |booking| %>
+      <div class="card col-6 m-4 p-3 active">
+        <div class="card-title">
+          <h5><%= booking.description.capitalize %></h5>
+        </div>
+        <%= image_tag("work.jpeg", :class => "img-responsive") %>
+        <div class="card-subtitle mb-2 text-muted mt-2">
+          <p>User <%= booking.user_bookee_id %> is requesting your time.</p>
+        </div>
+        <div class="card-text">
+          <p>This will last from <%= booking.start_date %> till <%= booking.end_date %>, for <%= booking.hours_per_day %> per day.</p>
+        </div>
+        <div class="price">
+          <p>In return you're getting: £<%= booking.total_price %>.</p>
+        </div>
+      </div>
+    <% end %>
+    <h2>Completed bookings</h2>
+    <% @bookings_completed.each do |booking| %>
+      <div class="card col-6 m-4 p-3 completed">
+      <div class="card-title">
+        <h5><%= booking.description.capitalize %></h5>
+        </div>
+        <%= image_tag("work.jpeg", :class => "img-responsive") %>
+        <div class="card-subtitle mb-2 text-muted mt-2">
+          <p>User <%= booking.user_bookee_id %> got your time.</p>
+        </div>
+        <div class="price">
+          <p>In return you're recieved: £<%= booking.total_price %>. Noice.</p>
+        </div>
+      </div>
+      </div>
     <% end %>
   </div>
 </div>
