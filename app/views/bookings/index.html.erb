@@ -33,7 +33,7 @@
                 <p><%= link_to "Edit", edit_user_booking_path(@user, booking) %></p>
               </div>
               <div class="delete">
-                <p><%= link_to "Delete", booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></p>
+                <p><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></p>
               </div>
             </div>
           </div>
