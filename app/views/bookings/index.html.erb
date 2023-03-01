@@ -17,16 +17,13 @@
             </div>
             <%= image_tag("work.jpeg", :class => "img-responsive") %>
             <div class="card-subtitle mb-2 text-muted mt-2">
-              <p>User <%= booking.user_bookee_id %> is requesting your time.</p>
+              <p>You are requesting User <%= booking.user_bookee_id %>'s time.</p>
             </div>
             <div class="card-text">
               <p>This will last from <%= booking.start_date %> till <%= booking.end_date %>, for <%= booking.hours_per_day %> per day.</p>
             </div>
             <div class="price">
-              <p>In return you're getting: £<%= booking.total_price %>.</p>
-            </div>
-            <div class="price">
-              <p>In return you're getting: £<%= booking.total_price %>.</p>
+              <p>In return you're paying: £<%= booking.total_price %>.</p>
             </div>
             <div class="d-flex justify-content-between">
               <div class="edit">
@@ -51,7 +48,7 @@
             </div>
             <%= image_tag("work.jpeg", :class => "img-responsive") %>
             <div class="card-subtitle mb-2 text-muted mt-2">
-              <p>User <%= booking.user_bookee_id %> got your time.</p>
+              <p>User <%= booking.user_booker_id %> got your time.</p>
             </div>
             <div class="price">
               <p>In return you're recieved: £<%= booking.total_price %>. Noice.</p>
