@@ -17,7 +17,7 @@
             </div>
             <%= image_tag("work.jpeg", :class => "img-responsive") %>
             <div class="card-subtitle mb-2 text-muted mt-2">
-              <p>You will be getting User <%= booking.user_booker_id %>'s time.</p>
+              <p>You will be getting User <%= booking.user_bookee_id %>'s time.</p>
             </div>
             <div class="price">
               <p>In will pay: £<%= booking.total_price %>. Noice.</p>
@@ -45,7 +45,7 @@
             </div>
             <%= image_tag("work.jpeg", :class => "img-responsive") %>
             <div class="card-subtitle mb-2 text-muted mt-2">
-              <p>You got User <%= booking.user_booker_id %>'s' time.</p>
+              <p>You got User <%= booking.user_bookee_id %>'s' time.</p>
             </div>
             <div class="price">
               <p>In paid: £<%= booking.total_price %>. Noice.</p>
