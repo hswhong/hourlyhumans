@@ -17,9 +17,8 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user_booker_id = current_user.id
     @booking.user_bookee_id = User.find(params[:user_id]).id
-  # Temporarily set while routes are reconfigured
     if @booking.save
-      redirect_to user_path(@user)
+      redirect_to user_bookings_path(current_user)
     else
       render :new, status: :unprocessable_entity
     end
