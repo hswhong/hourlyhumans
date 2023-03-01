@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
 
   def index
     @today = Date.today
+    @user = User.find(params[:user_id])
     @bookings_active = Booking.where(user_booker_id: current_user).where("end_date >= ?", @today).order(:start_date)
     @bookings_completed = Booking.where(user_booker_id: current_user).where("end_date < ?", @today).order(:start_date)
   end
@@ -30,6 +31,7 @@ class BookingsController < ApplicationController
 
   def edit
     @booking = Booking.find(params[:id])
+    @user = User.find(params[:user_id])
   end
 
   def update
@@ -39,7 +41,13 @@ class BookingsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
 
+  def destroy
+    @user = User.find(params[:user_id])
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to user_booking_path, status: :see_other
   end
 
   private

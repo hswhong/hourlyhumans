@@ -39,7 +39,6 @@
   transition: all 0.2s;
 }
 
-
 header {
   position: relative;
   height: 75vh;
@@ -91,4 +90,11 @@ header .overlay {
   header video {
     display: none;
   }
+  
+.rounded-circle{
+  object-fit: cover;
+}
+
+.img-footer {
+  height: 25px;
 }
