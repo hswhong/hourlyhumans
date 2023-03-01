@@ -39,9 +39,10 @@
   transition: all 0.2s;
 }
 
-.navbar {
-  // position: fixed;
-  // top: 0;
-  // width: 100%;
-  z-index: 999999;
+.rounded-circle{
+  object-fit: cover;
+}
+
+.img-footer {
+  height: 25px;
 }
