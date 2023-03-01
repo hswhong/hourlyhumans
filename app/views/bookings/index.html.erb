@@ -1,39 +1,71 @@
 <div class="container">
   <div class="row m-4">
     <h1>These are your bookings</h1>
-    <h2>Active bookings</h2>
-    <% @bookings_active.each do |booking| %>
-      <div class="card col-6 m-4 p-3 active">
-        <div class="card-title">
-          <h5><%= booking.description.capitalize %></h5>
-        </div>
-        <%= image_tag("work.jpeg", :class => "img-responsive") %>
-        <div class="card-subtitle mb-2 text-muted mt-2">
-          <p>User <%= booking.user_bookee_id %> is requesting your time.</p>
-        </div>
-        <div class="card-text">
-          <p>This will last from <%= booking.start_date %> till <%= booking.end_date %>, for <%= booking.hours_per_day %> per day.</p>
-        </div>
-        <div class="price">
-          <p>In return you're getting: £<%= booking.total_price %>.</p>
-        </div>
+    <div class="mt-2 mb-2">
+      <h2>Active bookings</h2>
+    </div>
+    <% if @bookings_active.empty? %>
+      <div>
+        <p>You have no active bookings</p>
       </div>
+    <% else %>
+      <% @bookings_active.each do |booking| %>
+          <div class="card col-6 m-4 p-3 active">
+            <div class="card-title">
+              <h4>Booking</h4>
+              <h5><%= booking.description.capitalize %></h5>
+            </div>
+            <%= image_tag("work.jpeg", :class => "img-responsive") %>
+            <div class="card-subtitle mb-2 text-muted mt-2">
+              <p>User <%= booking.user_bookee_id %> is requesting your time.</p>
+            </div>
+            <div class="card-text">
+              <p>This will last from <%= booking.start_date %> till <%= booking.end_date %>, for <%= booking.hours_per_day %> per day.</p>
+            </div>
+            <div class="price">
+              <p>In return you're getting: £<%= booking.total_price %>.</p>
+            </div>
+            <div class="price">
+              <p>In return you're getting: £<%= booking.total_price %>.</p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <div class="edit">
+                <p><%= link_to "Edit", edit_user_booking_path(@user, booking) %></p>
+              </div>
+              <div class="delete">
+                <p><%= link_to "Delete", booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></p>
+              </div>
+            </div>
+          </div>
+      <% end %>
     <% end %>
     <h2>Completed bookings</h2>
-    <% @bookings_completed.each do |booking| %>
-      <div class="card col-6 m-4 p-3 completed">
-      <div class="card-title">
-        <h5><%= booking.description.capitalize %></h5>
-        </div>
-        <%= image_tag("work.jpeg", :class => "img-responsive") %>
-        <div class="card-subtitle mb-2 text-muted mt-2">
-          <p>User <%= booking.user_bookee_id %> got your time.</p>
-        </div>
-        <div class="price">
-          <p>In return you're recieved: £<%= booking.total_price %>. Noice.</p>
-        </div>
-      </div>
-      </div>
+    <% if @bookings_completed.empty? %>
+      <p>You have no active bookings</p>
+    <% else %>
+      <% @bookings_completed.each do |booking| %>
+          <div class="card col-6 m-4 p-3 completed">
+            <div class="card-title">
+              <h6>Booking</h6>
+              <h2><%= booking.description.capitalize %></h2>
+            </div>
+            <%= image_tag("work.jpeg", :class => "img-responsive") %>
+            <div class="card-subtitle mb-2 text-muted mt-2">
+              <p>User <%= booking.user_bookee_id %> got your time.</p>
+            </div>
+            <div class="price">
+              <p>In return you're recieved: £<%= booking.total_price %>. Noice.</p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <div class="edit">
+                <p><%= link_to "Edit", edit_user_booking_path(@user, booking) %></p>
+              </div>
+              <div class="delete">
+                <p><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></p>
+              </div>
+            </div>
+          </div>
+      <% end %>
     <% end %>
   </div>
 </div>
