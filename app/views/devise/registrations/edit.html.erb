@@ -29,15 +29,21 @@
           <%= f.input :hourly_price, placeholder: "Fill only if you are offering yourself up for rent as a Human" %>
           <%= f.input :photo, as: :file %>
         </div>
-        <div class="form-actions">
-          <%= f.button :submit, "Update" %>
+        <div class="container">
+          <div class="row">
+            <div class="col text-center">
+              <a href="/humans" type="button" class="btn btn-primary btn-lg">Update</a>
+            </div>
+          </div>
         </div>
       <% end %>
       <div class="mt-3">
-        <h3>Cancel my account</h3>
-        <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-        <div class="mt-3">
-          <%= link_to "Back", :back %>
+        <div class="container">
+          <div class="row">
+            <div class="col text-center">
+              <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure? Are you REALLY sure about this? Did you sit in a corner and think about the possible consequences of your actions?", turbo_confirm: "Are you sure? Are you REALLY sure about this? Did you sit in a corner and and think about the possible consequences of your actions?" }, method: :delete, class: "btn btn-danger btn-sm" %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
