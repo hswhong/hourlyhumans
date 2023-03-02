@@ -85,3 +85,6 @@ group :test do
   gem "webdrivers"
   gem "dotenv-rails"
 end
+
+# Search Gem
+gem "pg_search"

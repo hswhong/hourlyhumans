@@ -18,6 +18,12 @@
   padding: 8px;
 }
 
+.card a {
+  margin-top: 2px;
+  color: #0D6CFD;
+  text-decoration: none;
+}
+
 .card-info {
   height: 250px;
   padding: 10px;
@@ -77,6 +83,15 @@ header .overlay {
   opacity: 0.5;
   z-index: 1;
 }
+
+.search-bar {
+  margin-bottom: 25px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+}
+
 
 /* Media Query for devices withi coarse pointers and no hover functionality */
 
