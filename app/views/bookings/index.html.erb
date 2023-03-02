@@ -1,4 +1,8 @@
 <div class="container">
-  <%= render "bookee" %>
-  <%= render "booker" %>
+  <% if @user.role == true %>
+    <%= render "bookee" %>
+    <%= render "booker" %>
+  <% else %>
+    <%= render "booker" %>
+  <% end %>
 </div>
