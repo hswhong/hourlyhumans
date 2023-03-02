@@ -9,4 +9,10 @@ class User < ApplicationRecord
 
   has_one_attached :photo
 
+  include PgSearch::Model
+  pg_search_scope :search_by_first_name_and_task,
+    against: [ :first_name, :task ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 end

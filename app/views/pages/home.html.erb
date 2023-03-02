@@ -6,6 +6,17 @@
       <%= link_to "Create a listing", new_user_booking_path(current_user), class: "btn btn-primary w-1/4", style: "btn-sm" %>
     <% end %>
   </div>
+  <div class="search-bar">
+    <%= form_with url: humans_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a human"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+  </div>
+    </div>
   <div class="grid-card">
     <% @users.each do |user| %>
       <div class="card">
