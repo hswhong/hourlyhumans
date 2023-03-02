@@ -27,7 +27,8 @@ pp "Creating users..."
     task: Faker::Commerce.department(max: 2, fixed_amount: true),
     hourly_price: rand(10..50),
     location: "#{Faker::Address.city}, #{Faker::Address.country}",
-    description: "#{Faker::Demographic.sex}, #{Faker::Demographic.marital_status}, #{Faker::Demographic.height(unit: :imperial)}. Big #{Faker::Games::Pokemon.name} fan. #{Faker::Games::Pokemon.move}!"
+    description: "#{Faker::Demographic.sex}, #{Faker::Demographic.marital_status}, #{Faker::Demographic.height(unit: :imperial)}. Big #{Faker::Games::Pokemon.name} fan. #{Faker::Games::Pokemon.move}!",
+    role: true
   )
   pp "Seeding users..."
 end
