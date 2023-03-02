@@ -11,8 +11,10 @@
   </head>
 
   <body>
-    <%= render "shared/nav", :user => @user %>
-    <%= yield %>
+    <%= render "shared/nav, :user => @user " %>
+    <div class="content">
+      <%= yield %>
+    </div>
     <%= render "shared/footer" %>
   </body>
 </html>

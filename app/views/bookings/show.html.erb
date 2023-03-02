@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row mt-5 mb-4">
       <ul><strong>Start date: </strong><%= @booking.start_date %></ul>
       <ul><strong>End date: </strong><%= @booking.end_date %></ul>
       <ul><strong>Total price: </strong><%= @booking.total_price %></ul>
@@ -8,6 +8,7 @@
       <ul><strong>Booking updated at: </strong><%= @booking.updated_at %></ul>
       <ul><strong>Hours per day: </strong><%= @booking.hours_per_day %></ul>
       <ul><strong>Description: </strong><%= @booking.description %></ul>
+      <ul><strong>Accepted?: </strong><%= @booking.is_accepted %></ul>
     </li>
   </div>
 </div>
