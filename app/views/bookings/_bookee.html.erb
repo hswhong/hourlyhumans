@@ -50,7 +50,7 @@
       <h4>Active bookings</h4>
     </div>
     <% if @bookings_as_bookee_active.empty? %>
-      <div class="mx-4">
+      <div>
         <p>You have no active bookings</p>
       </div>
     <% else %>
@@ -96,11 +96,11 @@
       <h4>Completed bookings</h4>
     </div>
     <% if @bookings_as_bookee_completed.empty? %>
-      <div class="mx-4">
+      <div>
         <p>You have no completed bookings</p>
       </div>
     <% else %>
-      <div class="row  mx-2">
+      <div class="row mx-2">
         <table class="table table-striped">
           <thead>
             <tr>
@@ -133,7 +133,7 @@
       <h4>Rejected bookings</h4>
     </div>
     <% if @bookings_as_bookee_rejected.empty? %>
-      <div class="mx-4">
+      <div>
         <p>You have no rejected bookings</p>
       </div>
     <% else %>
