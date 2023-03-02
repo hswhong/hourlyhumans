@@ -20,27 +20,29 @@
   </div>
   <div class="grid-card">
     <% @users.reverse.each do |user| %>
-      <div class="card">
-        <div class="card-info">
-          <div class="d-flex flex-column justify-content-center align-items-center">
-            <% if user.photo.key.present? == true %>
-              <%= cl_image_tag user.photo.key, height: 80, width: 80, :class => "rounded-circle" %>
-            <% else %>
-              <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="80">
-            <% end %>
-            <strong><%= link_to user.first_name, user_path(user) %></strong> <br>
+      <% if user.role == true %>
+        <div class="card">
+          <div class="card-info">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+              <% if user.photo.key.present? == true %>
+                <%= cl_image_tag user.photo.key, height: 80, width: 80, :class => "rounded-circle" %>
+              <% else %>
+                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="80">
+              <% end %>
+              <strong><%= link_to user.first_name, user_path(user) %></strong> <br>
+            </div>
+            <div>
+              <strong>Category: </strong><%= user.task %> <br>
+              <strong>Price: </strong>£<%= user.hourly_price %> <br>
+              <strong>Location: </strong><%= user.location %> <br>
+            </div>
           </div>
-          <div>
-            <strong>Category: </strong><%= user.task %> <br>
-            <strong>Price: </strong>£<%= user.hourly_price %> <br>
-            <strong>Location: </strong><%= user.location %> <br>
+          <%# <button type="button" id="btn">Rent human</button> %>
+          <div class="d-flex justify-content-center">
+            <%= link_to "Rent a human", new_user_booking_path(user), class: "btn btn-outline-primary", style: "btn-sm" %>
           </div>
         </div>
-        <%# <button type="button" id="btn">Rent human</button> %>
-        <div class="d-flex justify-content-center">
-          <%= link_to "Rent a human", new_user_booking_path(user), class: "btn btn-outline-primary", style: "btn-sm" %>
-        </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>
