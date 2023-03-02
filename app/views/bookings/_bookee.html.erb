@@ -1,0 +1,171 @@
+<div class="row mt-5 mb-4 bg-light card">
+    <h1 class="pt-4">These people want to book you</h1>
+    <div class="mt-2">
+      <h4>Pending bookings</h4>
+    </div>
+    <% if @bookings_requested.empty? %>
+      <div>
+        <p>You have no pending requests, Human 😔</p>
+      </div>
+    <% else %>
+    <div class="row mx-2">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">User</th>
+            <th scope="col">Their name</th>
+            <th scope="col">User contact</th>
+            <th scope="col">Description</th>
+            <th scope="col">You would earn</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col">Accept</th>
+            <th scope="col">Reject</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @bookings_requested.each do |booking| %>
+            <tr>
+              <% if booking.user_booker.photo.key.present? == true %>
+                <td><%= cl_image_tag booking.user_booker.photo.key, height: 25, width: 25, :class => "rounded-circle" %></td>
+              <% else %>
+                <td><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", height: 25, width: 25, :class => "rounded-circle" %></td>
+              <% end %>
+              <td><%= booking.user_booker.first_name%></td>
+              <td><%= booking.user_booker.email%></td>
+              <td><%= booking.description.capitalize %></td>
+              <td>£<%= booking.total_price.round %></td>
+              <td></td>
+              <td></td>
+              <td><%= link_to "Accept", accepted_path(@user, booking) %></td>
+              <td><%= link_to "Reject", rejected_path(@user, booking) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+    <% end %>
+
+    <div class="mt-2">
+      <h4>Active bookings</h4>
+    </div>
+    <% if @bookings_as_bookee_active.empty? %>
+      <div class="mx-4">
+        <p>You have no active bookings</p>
+      </div>
+    <% else %>
+     <div class="row mx-2">
+      <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">User</th>
+              <th scope="col">Their name</th>
+              <th scope="col">User contact</th>
+              <th scope="col">Description</th>
+              <th scope="col">You will earn</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @bookings_as_bookee_active.each do |booking| %>
+              <tr>
+                <% if booking.user_booker.photo.key.present? == true %>
+                  <td><%= cl_image_tag booking.user_booker.photo.key, height: 25, width: 25, :class => "rounded-circle" %></td>
+                <% else %>
+                  <td><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", height: 25, width: 25, :class => "rounded-circle" %></td>
+                <% end %>
+                <td><%= booking.user_booker.first_name%></td>
+                <td><%= booking.user_booker.email%></td>
+                <td><%= booking.description.capitalize %></td>
+                <td>£<%= booking.total_price.round %></td>
+                <td></td>
+                <td></td>
+                <td><%= link_to "Edit", edit_user_booking_path(@user, booking) %></td>
+                <td><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+
+    <div class="mt-2">
+      <h4>Completed bookings</h4>
+    </div>
+    <% if @bookings_as_bookee_completed.empty? %>
+      <div class="mx-4">
+        <p>You have no completed bookings</p>
+      </div>
+    <% else %>
+      <div class="row  mx-2">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">User</th>
+              <th scope="col">Their name</th>
+              <th scope="col">User contact</th>
+              <th scope="col">Description</th>
+              <th scope="col">You earned</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @bookings_as_bookee_active.each do |booking| %>
+              <tr>
+                <% if booking.user_booker.photo.key.present? == true %>
+                  <td><%= cl_image_tag booking.user_booker.photo.key, height: 25, width: 25, :class => "rounded-circle" %></td>
+                <% else %>
+                  <td><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", height: 25, width: 25, :class => "rounded-circle" %></td>
+                <% end %>
+                <td><%= booking.user_booker.first_name%></td>
+                <td><%= booking.user_booker.email%></td>
+                <td><%= booking.description.capitalize %></td>
+                <td>£<%= booking.total_price.round %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+    <div class="mt-2">
+      <h4>Rejected bookings</h4>
+    </div>
+    <% if @bookings_as_bookee_rejected.empty? %>
+      <div class="mx-4">
+        <p>You have no rejected bookings</p>
+      </div>
+    <% else %>
+      <div class="row mx-2">
+        <table class="table table-striped mx-4">
+          <thead>
+            <tr>
+              <th scope="col">User</th>
+              <th scope="col">Their name</th>
+              <th scope="col">User contact</th>
+              <th scope="col">Description</th>
+              <th scope="col">You would have earned</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @bookings_as_bookee_active.each do |booking| %>
+              <tr>
+                <% if booking.user_booker.photo.key.present? == true %>
+                  <td><%= cl_image_tag booking.user_booker.photo.key, height: 25, width: 25, :class => "rounded-circle" %></td>
+                <% else %>
+                  <td><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", height: 25, width: 25, :class => "rounded-circle" %></td>
+                <% end %>
+                <td><%= booking.user_booker.first_name%></td>
+                <td><%= booking.user_booker.email%></td>
+                <td><%= booking.description.capitalize %></td>
+                <td><%= booking.total_price.round %></td>
+                <td><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+    </div>
