@@ -85,7 +85,10 @@ header .overlay {
 }
 
 .search-bar {
-  margin: auto;
+  margin-bottom: 25px;
+  position: relative;
+  display: flex;
+  min-width: 250px;
 }
 
 /* Media Query for devices withi coarse pointers and no hover functionality */
