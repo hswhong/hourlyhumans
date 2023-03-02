@@ -8,6 +8,16 @@
       <% end %>
     </div>
   </div>
+  <div class="search-bar">
+    <%= form_with url: humans_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a human"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+  </div>
   <div class="grid-card">
     <% @users.reverse.each do |user| %>
       <div class="card">
@@ -34,19 +44,3 @@
     <% end %>
   </div>
 </div>
-<%# Previous code that was used with Unordered List %>
-<%# ______________________________________________________ %>
-<%#
-    <ul>
-<div class="grid-card">
-      <% @users.each do |user| %>
-  <%# <div class="card"> %>
-  <%# <strong><%= link_to user.first_name, booking_path(user) %>
-  <%# <li><strong>Category: </strong><%= user.task %>
-  <%# <li><strong>Price: £</strong><%= user.hourly_price %>
-  <%# <li><strong>Location: </strong><%= user.location %>
-  <%# </div> %>
-  <%# <% end %>
-  <%# </div> %>
-  <%# </ul> %>
-  <%# </div> %>
