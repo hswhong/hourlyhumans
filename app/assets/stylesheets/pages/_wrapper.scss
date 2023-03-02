@@ -11,3 +11,7 @@ body {
 .footer {
   flex-shrink: 0;
 }
+
+.container footer {
+  border-top: 4mm ridge rgba(211, 220, 50, .6);
+}
