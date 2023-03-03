@@ -90,6 +90,7 @@ header .overlay {
   background-color: black;
   opacity: 0.5;
   z-index: 1;
+  margin: 0px;
 }
 
 .search-bar {
@@ -100,10 +101,54 @@ header .overlay {
   border-radius: 50%;
 }
 
+#background-video {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.display-1 {
+  font-size: 120px;
+  border: black;
+  border-radius: 5px;
+  text-shadow: 4px 4px #1d1d1d;
+  text-align: left;
+}
+
+.lg-1 {
+  font-size: 35px;
+  color: rgb(233, 233, 233);
+  text-align: left;
+}
+
+#landing-btn {
+  float: left;
+}
+
+#landing-btn:hover {
+  box-shadow: 4px 4px #000000;
+}
+
+#landing-btn-2 {
+  background-color: white;
+  color: black;
+  float: left;
+  margin-left: 15px;
+}
+
+#landing-btn-2:hover {
+  box-shadow: 4px 4px #000000;
+}
 
 /* Media Query for devices withi coarse pointers and no hover functionality */
 
 /* This will use a fallback image instead of a video for devices that commonly do not support the HTML5 video element */
+
 
 @media (pointer: coarse) and (hover: none) {
   header {
