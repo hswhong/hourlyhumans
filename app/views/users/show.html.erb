@@ -101,7 +101,7 @@
                       <%= f.input :hours_per_day %>
                       <%= f.input :description %>
                       <%= f.input :total_price %>
-                      <%= f.submit class: 'btn btn-primary' %>
+                      <%= f.submit class: 'btn btn-primary', data: { controller: "confetti", action: "click->confetti#spray", animation_value: "school-pride", duration_value: "10" } %>
                     <% end %>
                   </div>
                 </div>
