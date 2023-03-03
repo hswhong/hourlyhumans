@@ -3,13 +3,20 @@ class BookingsController < ApplicationController
     @today = Date.today
     @user = User.find(params[:user_id])
     @bookings_requested = Booking.where(user_bookee_id: current_user).where(is_accepted: nil).order(:start_date)
-    @bookings_as_bookee_active = Booking.where(user_bookee_id: current_user).where("end_date >= ?", @today).where(is_accepted: true).order(:start_date)
-    @bookings_as_bookee_completed = Booking.where(user_bookee_id: current_user).where("end_date < ?", @today).where(is_accepted: true).order(:start_date)
-    @bookings_as_bookee_rejected = Booking.where(user_booker_id: current_user).where("end_date < ?", @today).where(is_accepted: false).order(:start_date)
-    @bookings_pending = Booking.where(user_booker_id: current_user).where("end_date >= ?", @today).where(is_accepted: nil).order(:start_date)
-    @bookings_active = Booking.where(user_booker_id: current_user).where("end_date >= ?", @today).where(is_accepted: true).order(:start_date)
-    @bookings_completed = Booking.where(user_booker_id: current_user).where("end_date < ?", @today).where(is_accepted: true).order(:start_date)
-    @bookings_rejected = Booking.where(user_booker_id: current_user).where("end_date < ?", @today).where(is_accepted: false).order(:start_date)
+    @bookings_as_bookee_active = Booking.where(user_bookee_id: current_user).where("end_date >= ?",
+                                                                                   @today).where(is_accepted: true).order(:start_date)
+    @bookings_as_bookee_completed = Booking.where(user_bookee_id: current_user).where("end_date < ?",
+                                                                                      @today).where(is_accepted: true).order(:start_date)
+    @bookings_as_bookee_rejected = Booking.where(user_booker_id: current_user).where("end_date < ?",
+                                                                                     @today).where(is_accepted: false).order(:start_date)
+    @bookings_pending = Booking.where(user_booker_id: current_user).where("end_date >= ?",
+                                                                          @today).where(is_accepted: nil).order(:start_date)
+    @bookings_active = Booking.where(user_booker_id: current_user).where("end_date >= ?",
+                                                                         @today).where(is_accepted: true).order(:start_date)
+    @bookings_completed = Booking.where(user_booker_id: current_user).where("end_date < ?",
+                                                                            @today).where(is_accepted: true).order(:start_date)
+    @bookings_rejected = Booking.where(user_booker_id: current_user).where("end_date < ?",
+                                                                           @today).where(is_accepted: false).order(:start_date)
   end
 
   def new
@@ -31,6 +38,7 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    @review = Review.new(booking: @booking)
   end
 
   def edit

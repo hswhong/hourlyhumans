@@ -1,0 +1,7 @@
+<div>
+  <%= simple_form_for [@booking, @review] do |f| %>
+    <%= f.input :comment, placeholder: "Enter a comment about the booking" %>
+    <%= f.association :rating, as: :radio_buttons, collection: [1, 2, 3, 4, 5] %>
+    <%= f.submit class: "btn-primary" %>
+  <% end %>
+</div>
