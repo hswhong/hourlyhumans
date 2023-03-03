@@ -7,7 +7,7 @@
       <div class="flex">
         <div class="mb-3">
           <% if @booking.user_bookee.photo.key.present? == true %>
-            <td><%= cl_image_tag booking.user_bookee.photo.key, height: 60, width: 60, :class => "rounded-circle" %></td>
+            <td><%= cl_image_tag @booking.user_bookee.photo.key, height: 60, width: 60, :class => "rounded-circle" %></td>
           <% else %>
             <td><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", height: 60, width: 60, :class => "rounded-circle" %></td>
           <% end %>
