@@ -16,7 +16,7 @@
             <th scope="col">Their name</th>
             <th scope="col">User contact</th>
             <th scope="col">Description</th>
-            <th scope="col">You would earn</th>
+            <th scope="col">You could earn</th>
             <th scope="col"></th>
             <th scope="col"></th>
             <th scope="col">Accept</th>
@@ -29,7 +29,7 @@
               <% if booking.user_booker.photo.key.present? == true %>
                 <td><%= cl_image_tag booking.user_booker.photo.key, height: 25, width: 25, :class => "rounded-circle" %></td>
               <% else %>
-                <td><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", height: 25, width: 25, :class => "rounded-circle" %></td>
+                <td><%= image_tag "https://bootdey.com/img/Content/avatar/avatar7.png", height: 25, width: 25, :class => "rounded-circle" %></td>
               <% end %>
               <td><%= booking.user_booker.first_name%></td>
               <td><%= booking.user_booker.email%></td>
@@ -37,8 +37,9 @@
               <td>£<%= booking.total_price.round %></td>
               <td></td>
               <td></td>
-              <td><%= link_to "Accept", accepted_path(@user, booking) %></td>
-              <td><%= link_to "Reject", rejected_path(@user, booking) %></td>
+              <td class="table-accept">
+                  <%= link_to "Accept", accepted_path(@user, booking), data: {controller: "confetti", action: "click->confetti#spray"}%></td>
+              <td class="table-reject"><%= link_to "Reject", rejected_path(@user, booking) %></td>
             </tr>
           <% end %>
         </tbody>
@@ -75,7 +76,7 @@
                 <% if booking.user_booker.photo.key.present? == true %>
                   <td><%= cl_image_tag booking.user_booker.photo.key, height: 25, width: 25, :class => "rounded-circle" %></td>
                 <% else %>
-                  <td><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", height: 25, width: 25, :class => "rounded-circle" %></td>
+                  <td><%= image_tag "https://bootdey.com/img/Content/avatar/avatar7.png", height: 25, width: 25, :class => "rounded-circle" %></td>
                 <% end %>
                 <td><%= booking.user_booker.first_name%></td>
                 <td><%= booking.user_booker.email%></td>
@@ -83,8 +84,8 @@
                 <td>£<%= booking.total_price.round %></td>
                 <td></td>
                 <td></td>
-                <td><%= link_to "Edit", edit_user_booking_path(@user, booking) %></td>
-                <td><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></td>
+                <td class="table-edit"><%= link_to "Edit", edit_user_booking_path(@user, booking) %></td>
+                <td class="table-delete"><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></td>
               </tr>
             <% end %>
           </tbody>
@@ -117,7 +118,7 @@
                 <% if booking.user_booker.photo.key.present? == true %>
                   <td><%= cl_image_tag booking.user_booker.photo.key, height: 25, width: 25, :class => "rounded-circle" %></td>
                 <% else %>
-                  <td><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", height: 25, width: 25, :class => "rounded-circle" %></td>
+                  <td><%= image_tag "https://bootdey.com/img/Content/avatar/avatar7.png", height: 25, width: 25, :class => "rounded-circle" %></td>
                 <% end %>
                 <td><%= booking.user_booker.first_name%></td>
                 <td><%= booking.user_booker.email%></td>
@@ -155,13 +156,13 @@
                 <% if booking.user_booker.photo.key.present? == true %>
                   <td><%= cl_image_tag booking.user_booker.photo.key, height: 25, width: 25, :class => "rounded-circle" %></td>
                 <% else %>
-                  <td><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", height: 25, width: 25, :class => "rounded-circle" %></td>
+                  <td><%= image_tag "https://bootdey.com/img/Content/avatar/avatar7.png", height: 25, width: 25, :class => "rounded-circle" %></td>
                 <% end %>
                 <td><%= booking.user_booker.first_name%></td>
                 <td><%= booking.user_booker.email%></td>
                 <td><%= booking.description.capitalize %></td>
                 <td><%= booking.total_price.round %></td>
-                <td><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></td>
+                <td class="table-delete"><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></td>
               </tr>
             <% end %>
           </tbody>

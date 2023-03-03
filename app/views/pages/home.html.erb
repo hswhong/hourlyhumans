@@ -36,6 +36,34 @@
           </div>
         </div>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+    <div class="grid-card">
+      <% @users.reverse.each do |user| %>
+        <% if user.role == true %>
+          <%= link_to user_path(user) do %>
+            <div class="card d-flex">
+                <div class="align-items-start flex-column" style="height: 200px;">
+                  <div class="p-2">
+                    <% if user.photo.key.present? == true %>
+                      <%= cl_image_tag user.photo.key, height: 80, width: 80, :class => "rounded-circle" %>
+                    <% else %>
+                      <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="80">
+                    <% end %>
+                  </div>
+                  <div class="d-flex justify-content-between text">
+                    <div class="d-flex flex-column text p-2">
+                      <h4><%= user.first_name %></h4>
+                      <div class="mini-text"><%= user.task %></div>
+                      <div class="mini-text"><%= user.location %></div>
+                    </div>
+                    <div class="d-flex flex-column align-items-top">
+                      <div class="price p-1">£<%= user.hourly_price.round %></div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          <% end %>
+          <% end %>
+        <% end %>
+    </div>
 </div>

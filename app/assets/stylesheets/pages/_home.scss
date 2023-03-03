@@ -13,22 +13,6 @@
   grid-row-gap: 32px;
 }
 
-.card {
-  background-color: rgb(255, 255, 255);
-  padding: 8px;
-}
-
-.card a {
-  margin-top: 2px;
-  color: #0D6CFD;
-  text-decoration: none;
-}
-
-.card-info {
-  height: 250px;
-  padding: 10px;
-}
-
 #btn {
   display: inline-block;
   padding: 0.3em 1.2em;
@@ -47,10 +31,12 @@
 .btn {
   transition: box-shadow .3s;
   border-radius: 5%;
+  color: white;
 }
 
 .btn:hover {
-  box-shadow: 0 0 20px rgba(33,33,33,.2);
+  box-shadow: 0 0 8px rgba(33,33,33,.2);
+  color: white;
 }
 
 header {
