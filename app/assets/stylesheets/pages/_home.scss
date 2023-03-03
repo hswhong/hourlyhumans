@@ -116,15 +116,15 @@ header .overlay {
   float: left;
 }
 
-#landing-btn:hover {
-  box-shadow: 4px 4px #000000;
-}
-
 #landing-btn-2 {
   background-color: white;
   color: black;
   float: left;
-  margin-left: 15px;
+  margin-left: 25px;
+}
+
+#landing-btn:hover {
+  box-shadow: 4px 4px #000000;
 }
 
 #landing-btn-2:hover {
