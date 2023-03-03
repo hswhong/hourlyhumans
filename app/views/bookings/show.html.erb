@@ -1,14 +1,67 @@
 <div class="container">
-  <div class="row mt-5 mb-4">
-      <ul><strong>Start date: </strong><%= @booking.start_date %></ul>
-      <ul><strong>End date: </strong><%= @booking.end_date %></ul>
-      <ul><strong>Total price: </strong><%= @booking.total_price %></ul>
-      <ul><strong>User Bookee id: </strong><%= @booking.user_bookee_id %></ul>
-      <ul><strong>Booking created at: </strong><%= @booking.created_at %></ul>
-      <ul><strong>Booking updated at: </strong><%= @booking.updated_at %></ul>
-      <ul><strong>Hours per day: </strong><%= @booking.hours_per_day %></ul>
-      <ul><strong>Description: </strong><%= @booking.description %></ul>
-      <ul><strong>Accepted?: </strong><%= @booking.is_accepted %></ul>
-    </li>
+  <div class="mt-4">
+    <h1>Your Booking with <%= @booking.user_bookee.first_name %></h1>
+  </div>
+  <div class="card mt-4 mb-4">
+    <div class="card-body">
+      <div class="flex">
+        <div class="mb-3">
+          <% if @booking.user_bookee.photo.key.present? == true %>
+            <td><%= cl_image_tag booking.user_bookee.photo.key, height: 60, width: 60, :class => "rounded-circle" %></td>
+          <% else %>
+            <td><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", height: 60, width: 60, :class => "rounded-circle" %></td>
+          <% end %>
+        </div>
+        <h5 class="card-title"><%= @booking.user_bookee.first_name %></h5>
+      </div>
+      <div class=" row">
+        <div class="col-sm">
+          <p><strong>Description: </strong><%= @booking.description %></p>
+          <p><strong>Start date: </strong><%= @booking.start_date %></p>
+          <p><strong>End date: </strong><%= @booking.end_date %></p>
+          <%= link_to "Check out this human", user_path(@booking), class: "btn btn-outline-primary", style: "btn-sm" %>
+        </div>
+        <div class="col-sm">
+          <p><strong>Total price: </strong><%= @booking.total_price %></p>
+          <p><strong>User Bookee id: </strong><%= @booking.user_bookee_id %></p>
+          <p><strong>Booking created at: </strong><%= @booking.created_at %></p>
+          <p><strong>Booking updated at: </strong><%= @booking.updated_at %></p>
+          <p><strong>Hours per day: </strong><%= @booking.hours_per_day %></p>
+          <p><strong>Accepted?: </strong><span class="badge badge-pill badge-info"><%= @booking.is_accepted %></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h3>Leave a review</h3>
+      <%= simple_form_for [@booking, @review] do |f| %>
+        <%= f.input :comment, placeholder: "Enter a comment about the booking" %>
+        <%= f.input :rating, collection: [1, 2, 3, 4, 5] %>
+        <%= f.submit class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="mb-4"></div>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="col-12 col-sm-12">
+        <h3>All Reviews</h3>
+        <% @booking.reviews.each do |review| %>
+          <div class ="d-inline-flex align-middle">
+            <strong>
+              <p class="mb-0"><%= review.rating %></p>
+            </strong>
+            <% review.rating.times do %>
+              <i class="fa fa-star fa-stars"></i>
+            <% end %>
+          </div>
+          <p class="mb-0"><%= review.comment %></p>
+          <hr>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,122 +1,134 @@
-  <div class="row mt-5 mb-4 bg-white card">
-      <h1 class="mt-2">These are Humans you've booked</h1>
-      <div class="mt-2">
-        <h4>Pending bookings</h4>
-      </div>
-      <% if @bookings_pending.empty? %>
-        <div>
-          <p>You have no pending bookings</p>
-        </div>
-      <% else %>
-        <div class="row mx-2">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">User</th>
-                <th scope="col">Their name</th>
-                <th scope="col">User contact</th>
-                <th scope="col">Description</th>
-                <th scope="col">You will pay</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @bookings_pending.each do |booking| %>
-                <tr>
-                  <% if booking.user_bookee.photo.key.present? == true %>
-                    <td><%= cl_image_tag booking.user_bookee.photo.key, height: 25, width: 25, :class => "rounded-circle" %></td>
-                  <% else %>
-                    <td><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", height: 25, width: 25, :class => "rounded-circle" %></td>
-                  <% end %>
-                  <td><%= booking.user_bookee.first_name%></td>
-                  <td><%= booking.user_bookee.email%></td>
-                  <td><%= booking.description.capitalize %></td>
-                  <td><%= booking.total_price.round %></td>
-                  <td><%= link_to "Edit", edit_user_booking_path(@user, booking) %></td>
-                  <td><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      <% end %>
-      <div class="mt-2">
-        <h4>Active bookings</h4>
-      </div>
-      <% if @bookings_active.empty? %>
-        <div>
-          <p>You have no active bookings</p>
-        </div>
-      <% else %>
-        <div class="row mx-2">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">User</th>
-                <th scope="col">Their name</th>
-                <th scope="col">User contact</th>
-                <th scope="col">Description</th>
-                <th scope="col">You pay</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @bookings_active.each do |booking| %>
-                <tr>
-                  <% if booking.user_bookee.photo.key.present? == true %>
-                    <td><%= cl_image_tag booking.user_bookee.photo.key, height: 25, width: 25, :class => "rounded-circle" %></td>
-                  <% else %>
-                    <td><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", height: 25, width: 25, :class => "rounded-circle" %></td>
-                  <% end %>
-                  <td><%= booking.user_bookee.first_name%></td>
-                  <td><%= booking.user_bookee.email%></td>
-                  <td><%= booking.description.capitalize %></td>
-                  <td><%= booking.total_price %></td>
-                  <td><%= link_to "Edit", edit_user_booking_path(@user, booking) %></td>
-                  <td><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      <% end %>
-      <h4>Completed bookings</h4>
-      <% if @bookings_completed.empty? %>
-        <p>You have no completed bookings</p>
-      <% else %>
-        <div class="row mx-2">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">User</th>
-                <th scope="col">Their name</th>
-                <th scope="col">User contact</th>
-                <th scope="col">Description</th>
-                <th scope="col">You paid</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @bookings_completed.each do |booking| %>
-                <tr>
-                  <% if booking.user_bookee.photo.key.present? == true %>
-                    <td><%= cl_image_tag booking.user_bookee.photo.key, height: 25, width: 25, :class => "rounded-circle" %></td>
-                  <% else %>
-                    <td><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", height: 25, width: 25, :class => "rounded-circle" %></td>
-                  <% end %>
-                  <td><%= booking.user_bookee.first_name%></td>
-                  <td><%= booking.user_bookee.email%></td>
-                  <td><%= booking.description.capitalize %></td>
-                  <td><%= booking.total_price %></td>
-                  <td><%= link_to "Edit", edit_user_booking_path(@user, booking) %></td>
-                  <td><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      <% end %>
+<div class="row mt-5 mb-4 bg-white card">
+  <h1 class="mt-2">These are Humans you've booked</h1>
+  <div class="mt-2">
+    <h4>Pending bookings</h4>
+  </div>
+  <% if @bookings_pending.empty? %>
+    <div>
+      <p>You have no pending bookings</p>
     </div>
+  <% else %>
+    <div class="row mx-2">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">User</th>
+            <th scope="col">Their name</th>
+            <th scope="col">User contact</th>
+            <th scope="col">Description</th>
+            <th scope="col">You will pay</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @bookings_pending.each do |booking| %>
+            <tr>
+              <% if booking.user_bookee.photo.key.present? == true %>
+                <td><%= cl_image_tag booking.user_bookee.photo.key, height: 25, width: 25, :class => "rounded-circle" %></td>
+              <% else %>
+                <td><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", height: 25, width: 25, :class => "rounded-circle" %></td>
+              <% end %>
+              <td><%= booking.user_bookee.first_name%></td>
+              <td><%= booking.user_bookee.email%></td>
+              <td><%= booking.description.capitalize %></td>
+              <td><%= booking.total_price.round %></td>
+              <% if @bookings_active.empty? == false %>
+                <td><%= link_to "Edit", edit_user_booking_path(@user, booking) %></td>
+              <% else %>
+                <td><%= link_to "View", user_booking_path(@user, booking) %></td>
+              <% end %>
+              <td><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+  <div class="mt-2">
+    <h4>Active bookings</h4>
+  </div>
+  <% if @bookings_active.empty? %>
+    <div>
+      <p>You have no active bookings</p>
+    </div>
+  <% else %>
+    <div class="row mx-2">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">User</th>
+            <th scope="col">Their name</th>
+            <th scope="col">User contact</th>
+            <th scope="col">Description</th>
+            <th scope="col">You pay</th>
+            <th scope="col">View</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @bookings_active.each do |booking| %>
+            <tr>
+              <% if booking.user_bookee.photo.key.present? == true %>
+                <td><%= cl_image_tag booking.user_bookee.photo.key, height: 25, width: 25, :class => "rounded-circle" %></td>
+              <% else %>
+                <td><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", height: 25, width: 25, :class => "rounded-circle" %></td>
+              <% end %>
+              <td><%= booking.user_bookee.first_name%></td>
+              <td><%= booking.user_bookee.email%></td>
+              <td><%= booking.description.capitalize %></td>
+              <td><%= booking.total_price %></td>
+              <% if @bookings_active.empty? == true %>
+                <td><%= link_to "Edit", edit_user_booking_path(@user, booking) %></td>
+              <% else %>
+                <td><%= link_to "View", user_booking_path(@user, booking) %></td>
+              <% end %>
+              <td><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+  <h4>Completed bookings</h4>
+  <% if @bookings_completed.empty? %>
+    <p>You have no completed bookings</p>
+  <% else %>
+    <div class="row mx-2">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">User</th>
+            <th scope="col">Their name</th>
+            <th scope="col">User contact</th>
+            <th scope="col">Description</th>
+            <th scope="col">You paid</th>
+            <th scope="col">View</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @bookings_completed.each do |booking| %>
+            <tr>
+              <% if booking.user_bookee.photo.key.present? == true %>
+                <td><%= cl_image_tag booking.user_bookee.photo.key, height: 25, width: 25, :class => "rounded-circle" %></td>
+              <% else %>
+                <td><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", height: 25, width: 25, :class => "rounded-circle" %></td>
+              <% end %>
+              <td><%= booking.user_bookee.first_name%></td>
+              <td><%= booking.user_bookee.email%></td>
+              <td><%= booking.description.capitalize %></td>
+              <td><%= booking.total_price %></td>
+              <% if @bookings_active.empty? == true %>
+                <td><%= link_to "Edit", edit_user_booking_path(@user, booking) %></td>
+              <% else %>
+                <td><%= link_to "View", user_booking_path(@user, booking) %></td>
+              <% end %>
+              <td><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

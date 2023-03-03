@@ -11,8 +11,8 @@ class User < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_first_name_and_task,
-    against: [ :first_name, :task ],
-    using: {
-      tsearch: { prefix: true } # <-- now `superman batm` will return something!
-    }
+                  against: %i[first_name task],
+                  using: {
+                    tsearch: { prefix: true } # <-- now `superman batm` will return something!
+                  }
 end

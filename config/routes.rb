@@ -5,6 +5,12 @@ Rails.application.routes.draw do
     resources :bookings
   end
 
+  resources :bookings do
+    resources :reviews, only: [:destroy, :create, :new]
+  end
+
+
+
   get "/humans" => "pages#home"
 
   # get "users/:id", to: "booking/id/users/id"

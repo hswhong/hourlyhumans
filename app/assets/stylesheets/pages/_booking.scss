@@ -1,0 +1,31 @@
+.badge-pill {
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 99px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+.badge-info {
+  color: #fff;
+  background-color: #17a2b8;
+}
+
+.booking-card {
+  background-color: white;
+  border-radius: 16px;
+  border: 1px solid #dddddd;
+}
+
+.fa-stars {
+  color: #fdbe00;
+}
