@@ -55,11 +55,16 @@ header video {
   min-height: 100%;
   width: auto;
   height: auto;
+  object-fit: fill;
   z-index: 0;
   -ms-transform: translateX(-50%) translateY(-50%);
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
+}
+
+video {
+  height: 100%;
 }
 
 header .container {
@@ -85,17 +90,6 @@ header .overlay {
   display: flex;
   justify-content: center;
   border-radius: 50%;
-}
-
-#background-video {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  // position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
 }
 
 .display-1 {
@@ -130,6 +124,7 @@ header .overlay {
 #landing-btn-2:hover {
   box-shadow: 4px 4px #000000;
 }
+
 
 /* Media Query for devices withi coarse pointers and no hover functionality */
 
