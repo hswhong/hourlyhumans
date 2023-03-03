@@ -37,7 +37,8 @@
               <td>£<%= booking.total_price.round %></td>
               <td></td>
               <td></td>
-              <td class="table-accept"><%= link_to "Accept", accepted_path(@user, booking) %></td>
+              <td class="table-accept">
+                  <%= link_to "Accept", accepted_path(@user, booking), data: {controller: "confetti", action: "click->confetti#spray"}%></td>
               <td class="table-reject"><%= link_to "Reject", rejected_path(@user, booking) %></td>
             </tr>
           <% end %>
