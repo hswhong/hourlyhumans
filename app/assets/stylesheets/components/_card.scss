@@ -8,11 +8,9 @@ body {
   padding: 15px;
 }
 
-.card {
+.grid-card .card {
+  padding: 8px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-}
-
-.card {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -20,8 +18,19 @@ body {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 0 solid rgba(0, 0, 0, .125);
+  border: 1px solid rgba(0, 0, 0, .125);
   border-radius: .25rem;
+  overflow: hidden;
+
+  &:hover {
+    border: 1px solid #1c72fd;
+    transform: scale(1.04);
+  }
+}
+
+.grid-card a {
+  text-decoration: none;
+  color: #1a202c;
 }
 
 .card-body {
@@ -33,6 +42,38 @@ body {
 .card-image {
   max-width:100%;
   max-height:100%;
+}
+
+.card a {
+  margin-top: 2px;
+  color: #0D6CFD;
+  text-decoration: none;
+}
+
+.card .image {
+  border-bottom: 0.2px solid #1c72fd;
+  width: 100%;
+  margin: 0;
+  background-size: cover;
+}
+
+.card .mini-text {
+  font-size: x-small;
+}
+
+.price {
+  border-radius: 50%;
+  color: #1c72fd;
+  background-color: white;
+}
+
+.card h4 {
+  margin: 0;
+}
+
+.card-info {
+  height: 250px;
+  padding: 10px;
 }
 
 .gutters-sm {
