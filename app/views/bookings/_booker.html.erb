@@ -33,8 +33,8 @@
                   <td><%= booking.user_bookee.email%></td>
                   <td><%= booking.description.capitalize %></td>
                   <td><%= booking.total_price.round %></td>
-                  <td><%= link_to "Edit", edit_user_booking_path(@user, booking) %></td>
-                  <td><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></td>
+                  <td class="table-edit"><%= link_to "Edit", edit_user_booking_path(@user, booking) %></td>
+                  <td class="table-delete"><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></td>
                 </tr>
               <% end %>
             </tbody>
@@ -74,8 +74,8 @@
                   <td><%= booking.user_bookee.email%></td>
                   <td><%= booking.description.capitalize %></td>
                   <td><%= booking.total_price %></td>
-                  <td><%= link_to "Edit", edit_user_booking_path(@user, booking) %></td>
-                  <td><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></td>
+                  <td class="table-edit"><%= link_to "Edit", edit_user_booking_path(@user, booking) %></td>
+                  <td class="table-delete"><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></td>
                 </tr>
               <% end %>
             </tbody>
@@ -111,8 +111,8 @@
                   <td><%= booking.user_bookee.email%></td>
                   <td><%= booking.description.capitalize %></td>
                   <td><%= booking.total_price %></td>
-                  <td><%= link_to "Edit", edit_user_booking_path(@user, booking) %></td>
-                  <td><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></td>
+                  <td class="table-edit"><%= link_to "Edit", edit_user_booking_path(@user, booking) %></td>
+                  <td class="table-delete"><%= link_to "Delete", user_booking_path(@user, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you delete this booking?"}%></td>
                 </tr>
               <% end %>
             </tbody>
